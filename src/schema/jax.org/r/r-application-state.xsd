@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://jax.org/r"
+            xmlns:tns="http://jax.org/r"
+            elementFormDefault="qualified">
+    <xsd:include schemaLocation="../../jax.org/r/r-install-structure.xsd"/>
+    <xsd:complexType name="rApplicationStateType">
+        <xsd:sequence>
+            <xsd:element name="detectedRInstallation" type="tns:rInstallationType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        identifies all of the r installations that we have
+                        detected
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="recentProjectFile" minOccurs="0" maxOccurs="unbounded" type="tns:fileType"/>
+            <xsd:element name="recentImageExportDirectory" minOccurs="0" maxOccurs="1" type="tns:fileType"/>
+            <xsd:element name="recentTableExportDirectory" minOccurs="0" maxOccurs="1" type="tns:fileType"/>
+            <xsd:element name="recentRScriptExportDirectory" minOccurs="0" maxOccurs="1" type="tns:fileType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="fileType">
+        <xsd:attribute name="fileName" type="xsd:string" use="required"/>
+    </xsd:complexType>
+</xsd:schema>

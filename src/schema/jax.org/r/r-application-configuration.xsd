@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://jax.org/r"
+            xmlns:tns="http://jax.org/r"
+            elementFormDefault="qualified">
+    <xsd:include schemaLocation="../../jax.org/r/r-install-structure.xsd"/>
+    <xsd:element name="rApplicationConfiguration">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="rConfiguration" type="tns:rConfigurationType"></xsd:element>
+                <xsd:element name="launchSystemProperty" type="tns:systemPropertyType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="javaMemoryLimitMegabytes" type="xsd:unsignedInt" use="optional"/>
+            <xsd:attribute name="rMemoryLimitMegabytes" type="xsd:unsignedInt" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="systemPropertyType">
+        <xsd:attribute name="key" type="xsd:string" use="required"/>
+        <xsd:attribute name="value" type="xsd:string" use="required"/>
+    </xsd:complexType>
+</xsd:schema>

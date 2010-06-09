@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jxb:bindings
+    version="1.0"
+    xmlns:jxb="http://java.sun.com/xml/ns/jaxb">
+    
+    <jxb:bindings
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        schemaLocation="jax.org/r/r-install-structure.xsd"
+        node="/xs:schema">
+        <jxb:schemaBindings>
+            <jxb:package name="org.jax.r.jaxbgenerated"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    
+    <jxb:bindings
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        schemaLocation="jax.org/j-qtl/j-qtl-application-state.xsd"
+        node="/xs:schema">
+        <jxb:schemaBindings>
+            <jxb:package name="org.jax.qtl.jaxbgenerated"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    
+    <jxb:bindings
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        schemaLocation="jax.org/j-maanova/j-maanova-application-state.xsd"
+        node="/xs:schema">
+        <jxb:schemaBindings>
+            <jxb:package name="org.jax.maanova.jaxbgenerated"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    
+</jxb:bindings> 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project
+    xmlns:ivy="antlib:org.apache.ivy.ant"
+    name="rjava-conf-schema"
+    default="dist"
+    basedir=".">
+    
+    <import file="build-properties.xml"/>
+    <import file="${common.build.dir}/build-common.xml"/>
+    
+    <target name="compile-nodeps" depends="ivy-retrieve,schema-to-java" description="compile the source">
+        <!-- Run a dependancy check on all of the java classes -->
+        <mkdir dir="${dependcache}"/>
+        <depend srcdir="${src}/java" destdir="${build}/classes" cache="${dependcache}" closure="yes"/>
+        
+        <!-- Compile the java code from ${src} into ${build}/classes -->
+        <mkdir dir="${build}/classes"/>
+        <javac destdir="${build}/classes" target="1.5" source="1.5" deprecation="true" classpathref="proj.classpath" debug="true">
+            <!--
+            <compilerarg value="-Xlint"/>
+            <compilerarg value="-Xlint:-serial"/>
+            -->
+            <src path="${build}/java"/>
+        </javac>
+    </target>
+    
+</project>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://jax.org/r"
+            xmlns:tns="http://jax.org/r"
+            elementFormDefault="qualified">
+    <xsd:complexType name="rInstallationType">
+        <xsd:annotation>
+            <xsd:documentation>
+                type describing the information that we care about for a single
+                R installation
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="rHomeDirectory" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    the R_HOME for this installation. see R
+                    documentation for a description of how this
+                    should be set (www.r-project.org)
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="version" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation>
+                    the version of this R installation
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="libraryDirectory" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    the directory containing the dynamically loadable libraries
+                    for this R installation
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    <xsd:complexType name="rConfigurationType">
+        <xsd:annotation>
+            <xsd:documentation>
+                contains information about the R installations including,
+                the minimum version we can integrate with, the known/detected
+                versions of R and the version that we are currently integrated
+                with
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="rLaunchConfiguration" type="tns:rLaunchConfigurationType" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="rLaunchConfigurationType">
+        <xsd:sequence>
+            <xsd:element name="selectedRInstallation" type="tns:rInstallationType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        this is the installation that we should use to launch
+                        if launchRUsing is set to "selectedRInstallation"
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="launchRUsing" type="tns:launchRUsingType" use="required"/>
+    </xsd:complexType>
+    <xsd:simpleType name="launchRUsingType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="environmentVariables">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        indicates that we should launch R using the environment
+                        variables (ignore the selected R installation)
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="selectedRInstallation">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        indicates that we should launch R using the selected
+                        installation
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

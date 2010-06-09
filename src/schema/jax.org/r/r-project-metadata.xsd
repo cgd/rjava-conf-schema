@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://jax.org/r"
+            xmlns:tns="http://jax.org/r"
+            elementFormDefault="qualified">
+    <xsd:complexType name="rProjectMetadataType">
+        <xsd:sequence>
+            <xsd:element name="rHistoryItem" type="tns:rHistoryItemType" maxOccurs="unbounded" minOccurs="0">
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="projectName" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="rHistoryItemType" mixed="true">
+        <xsd:attribute name="itemType" type="tns:itemTypeType"/>
+    </xsd:complexType>
+    <xsd:simpleType name="itemTypeType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="rOutput"/>
+            <xsd:enumeration value="comment"/>
+            <xsd:enumeration value="command"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

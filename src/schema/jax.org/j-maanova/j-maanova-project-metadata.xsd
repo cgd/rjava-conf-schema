@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://jax.org/j-maanova"
+            xmlns:tns="http://jax.org/j-maanova"
+            elementFormDefault="qualified"
+            xmlns:jax-r="http://jax.org/r">
+    <xsd:import schemaLocation="../../jax.org/r/r-project-metadata.xsd" namespace="http://jax.org/r"/>
+    <xsd:element name="jMaanovaProjectMetadata">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="jax-r:rProjectMetadataType">
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

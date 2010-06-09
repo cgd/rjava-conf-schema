@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://jax.org/j-maanova"
+            xmlns:tns="http://jax.org/j-maanova"
+            elementFormDefault="qualified"
+            xmlns:jax-r="http://jax.org/r">
+    <xsd:import schemaLocation="../../jax.org/r/r-application-state.xsd" namespace="http://jax.org/r"/>
+    <xsd:element name="jMaanovaApplicationState">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension xmlns:jax-r="http://jax.org/r" base="jax-r:rApplicationStateType">
+                    <xsd:sequence>
+                        <xsd:element name="recentMicroarrayDataDirectory" minOccurs="0" maxOccurs="1" type="jax-r:fileType"/>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
